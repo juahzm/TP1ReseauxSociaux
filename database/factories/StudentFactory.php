@@ -22,9 +22,9 @@ class StudentFactory extends Factory
             'name' => $this->faker->name,
             'address' => $this->faker->address,
             'phone' => $this->faker->phoneNumber,
-            'e-mail' => $this->faker->email,
+            'email' => $this->faker->email,
             'date' => $this->faker->date,
-            'user_id' => User::factory(),
+            'user_id' => User::factory(), //
             'city_id' => City::inRandomOrder()->first()->id,
         ];
     }

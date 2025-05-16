@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name', length: 255);
             $table->string('address', length: 255);
             $table->string('phone', length: 20);
-            $table->string('e-mail', length: 255);
+            $table->string('email', length: 255);
             $table->date('date');
             $table->unsignedBigInteger('city_id');
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');

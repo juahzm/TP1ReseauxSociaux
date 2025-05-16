@@ -16,27 +16,27 @@ class CityFactory extends Factory
      */
     public function definition(): array
     {
+
+        $cities = [
+            'Montreal',
+            'Quebec City',
+            'Laval',
+            'Gatineau',
+            'Longueuil',
+            'Sherbrooke',
+            'Saguenay',
+            'Lévis',
+            'Trois-Rivières',
+            'Terrebonne',
+            'Saint-Jean-sur-Richelieu',
+            'Repentigny',
+            'Drummondville',
+            'Saint-Jérôme',
+            'Granby',
+        ];
+
         return [
-
-            'name' => $this->faker->randomElement([
-                'Montreal',
-                'Quebec City',
-                'Laval',
-                'Gatineau',
-                'Longueuil',
-                'Sherbrooke',
-                'Saguenay',
-                'Lévis',
-                'Trois-Rivières',
-                'Terrebonne',
-                'Saint-Jean-sur-Richelieu',
-                'Repentigny',
-                'Drummondville',
-                'Saint-Jérôme',
-                'Granby',
-            ]),
-
-
+            'name' => $this->faker->unique()->randomElement($cities),
         ];
     }
 }
