@@ -20,22 +20,47 @@
                 <div class="mb-2">
                     <label for="name" class="form-label">name</label>
                     <input type="text" id="name" name="name" class="form-control">
+                    @if($errors->has('name'))
+                    <div class="text-danger small mt-2">
+                        {{ $errors->first('name')}}
+                    </div>
+                    @endif
                 </div>
                 <div class="mb-2">
                     <label for="address" class="form-label">Address</label>
                     <input type="text" id="address" name="address" class="form-control">
+                    @if($errors->has('address'))
+                    <div class="text-danger mt-2 small">
+                        {{ $errors->first('address')}}
+                    </div>
+                    @endif
                 </div>
                 <div class="mb-2">
                     <label for="phone" class="form-label">phone</label>
                     <input type="text" id="phone" name="phone" class="form-control">
+                    @if($errors->has('phone'))
+                    <div class="text-danger mt-2 small">
+                        {{ $errors->first('phone')}}
+                    </div>
+                    @endif
                 </div>
                 <div class="mb-2">
                     <label for="phone" class="form-label">e-mail</label>
-                    <input type="email" id="email" name="e-mail" class="form-control">
+                    <input type="email" id="email" name="email" class="form-control">
+                    @if($errors->has('email'))
+                    <div class="text-danger mt-2 small">
+                        {{ $errors->first('email')}}
+                    </div>
+                    @endif
                 </div>
                 <div class="mb-2">
                     <label for="date" class="form-label">Birthdate</label>
                     <input type="date" id="date" name="date" class="form-control">
+                    @if($errors->has('date'))
+                    <div class="text-danger mt-2 small">
+                        {{ $errors->first('date')}}
+                    </div>
+                    @endif
                 </div>
                 <div class="mb-2">
                     <div class="mb-3">

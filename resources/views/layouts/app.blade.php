@@ -35,6 +35,13 @@
         </li>
     </ul>
 
+    @if(session('success'))
+    <div class="ml-1 mt-4 mr-1 mb-4 alert alert-success  alert-dismissible fade show" role="alert">
+        <strong>{{session('success')}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+
     @yield('content')
 
     <footer class="footer bg-blue text white">

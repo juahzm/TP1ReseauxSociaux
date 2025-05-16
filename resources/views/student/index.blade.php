@@ -6,6 +6,15 @@
 
 <h3 class="mb-5 mt-5 text-primary text-center ">Students List</h3>
 
+<!-- @if(session('success'))
+<div class="ml-1 mt-4 mr-1 mb-4 alert alert-success  alert-dismissible fade show" role="alert">
+    <strong>{{session('success')}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif -->
+
+
+
 <div class="d-flex flex-row flex-wrap gap-5 justify-content-center ">
 
     @forelse($students as $student)
