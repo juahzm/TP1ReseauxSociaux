@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\StudentController;
+use App\Models\Student;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,6 @@ Route::get('/students', [StudentController::class, 'index'])->name('student.inde
 Route::get('/students/{student}', [StudentController::class, 'show'])->name('student.show');
 Route::get('/create/student', [StudentController::class, 'create'])->name('student.create');
 Route::post('/create/student', [StudentController::class, 'store'])->name('student.store');
+Route::get('/edit/student/{student}', [StudentController::class, 'edit'])->name('student.edit');
+Route::put('/edit/student/{student}', [StudentController::class, 'update'])->name('student.update');
+Route::delete('/students/{student}', [StudentController::class, 'destroy'])->name('student.destroy');

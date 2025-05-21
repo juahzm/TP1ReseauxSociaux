@@ -7,8 +7,8 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use App\Models\City;
 use App\Models\User;
-
 use Illuminate\Http\Request;
+
 
 class StudentController extends Controller
 {
@@ -59,5 +59,49 @@ class StudentController extends Controller
         ]);
 
         return redirect()->route('student.index', $student->id)->with('success', 'Student was added successfully');
+    }
+
+
+    public function edit(Student $student)
+    {
+        $cities = City::all();
+        return view('student.edit', ['student' => $student, 'cities' => $cities]);
+    }
+
+    public function update(Request $request, Student $student)
+    {
+
+
+        $request->validate([
+
+            'name' => 'required| min:5',
+            'address' => 'required| max:30',
+            'phone' => 'required| max:30',
+            'email' => 'required',
+            'date' => 'required',
+
+        ]);
+
+        $student->update([
+
+            'name' => $request->name,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'date' => $request->date,
+            'city_id' => $request->city_id,
+
+        ]);
+
+        return redirect()->route('student.index')->with('success', 'Student was succesfully updated');
+    }
+
+    public function destroy(Student $student)
+    {
+
+        $target = $student->name;
+        $student->delete();
+
+        return redirect()->route('student.index')->with('success', 'Student: ' . $target . ' was deleted successfully!');
     }
 }
