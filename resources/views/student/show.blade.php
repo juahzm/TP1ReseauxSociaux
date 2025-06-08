@@ -1,11 +1,11 @@
 @extends('layouts.app')
-@section('title', 'Single Student')
+@section('title', trans('lang.student'))
 @section('content')
 
 <!-- {{$student}} -->
 
 
-<h3 class="mb-5 mt-5 text-primary text-center ">Student</h3>
+<h3 class="mb-5 mt-5 text-primary text-center ">{{trans('lang.student')}}</h3>
 
 
 
@@ -19,16 +19,16 @@
         </div>
 
         <div class="card-body text-primary text-center">
-            <p class="card-text text-muted"><strong>Phone:</strong> {{ $student->phone }}</p>
-            <p class="card-text text-muted"><strong>e-mail:</strong> {{ $student->email }}</p>
-            <p class="card-text text-muted"><strong>Birthdate:</strong> {{ $student->date }}</p>
-            <p class="card-text text-muted"><strong>City:</strong> {{ $student->city->name }}</p>
+            <p class="card-text text-muted"><strong>{{trans('lang.phone')}}: </strong> {{ $student->phone }}</p>
+            <p class="card-text text-muted"><strong>{{trans('lang.email')}}: </strong> {{ $student->email }}</p>
+            <p class="card-text text-muted"><strong>{{trans('lang.birthday')}}: </strong> {{ $student->date }}</p>
+            <p class="card-text text-muted"><strong>{{trans('lang.city')}}: </strong> {{ $student->city->name }}</p>
         </div>
         <div class="card-footer bg-transparent border-info d-flex justify-content-between ">
 
-            <a href="{{route('student.edit', $student->id)}}" class="btn btn-success text-white">Edit</a>
+            <a href="{{route('student.edit', $student->id)}}" class="btn btn-success text-white">{{trans('lang.edit')}}</a>
             <button type="button" class="btn btn-danger text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Delete
+                {{trans('lang.delete')}}
             </button>
 
 
@@ -50,7 +50,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Are you sure you want to delete?. All data associated with the student {{$student->name}} will be permanently lost.
+                    {{trans('lang.modal_delete1')}}{{$student->name}} {{trans('lang.modal_delete2')}}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

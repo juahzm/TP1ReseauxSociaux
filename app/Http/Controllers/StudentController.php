@@ -8,6 +8,7 @@ use App\Models\Student;
 use App\Models\City;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class StudentController extends Controller
@@ -53,7 +54,7 @@ class StudentController extends Controller
             'email' => $request->email,
             'date' => $request->date,
             'city_id' => $request->city_id,
-            'user_id' => 1,
+            'user_id' => Auth::user()->id,
 
 
         ]);

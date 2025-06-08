@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('title', 'Students')
+@section('title', trans('lang.title_students'))
 @section('content')
 
 <!-- {{$students}} -->
 
-<h3 class="mb-5 mt-5 text-primary text-center ">Students List</h3>
+<h3 class="mb-5 mt-5 text-primary text-center ">{{trans('lang.title_students')}}</h3>
 
 <!-- @if(session('success'))
 <div class="ml-1 mt-4 mr-1 mb-4 alert alert-success  alert-dismissible fade show" role="alert">
@@ -19,20 +19,18 @@
 
     @forelse($students as $student)
 
-
-
     <div class="card border-info mb-3" style="max-width: 18rem;">
         <div class="card-header bg-transparent border-info">
-            <h6 class="card-title text-primary text-center"><strong>StudentId:</strong> {{ $student->id }}</h6>
+            <h6 class="card-title text-primary text-center"><strong>{{trans('lang.student_Id')}}</strong> {{ $student->id }}</h6>
         </div>
 
         <div class="card-body text-primary">
-            <p class="card-text text-muted"><strong>Name:</strong> {{ $student->name }}</p>
-            <p class="card-text text-muted"><strong>Phone:</strong> {{ $student->phone }}</p>
+            <p class="card-text text-muted"><strong>{{trans('lang.name')}}</strong> {{ $student->name }}</p>
+            <p class="card-text text-muted"><strong>{{trans('lang.phone')}}</strong> {{ $student->phone }}</p>
         </div>
         <div class="card-footer bg-transparent border-info d-flex justify-content-center ">
 
-            <a href="{{route('student.show', $student->id)}}" class="btn btn-sm btn-outline-primary">More</a>
+            <a href="{{route('student.show', $student->id)}}" class="btn btn-sm btn-outline-primary">{{trans('lang.more')}}</a>
         </div>
     </div>
     @empty

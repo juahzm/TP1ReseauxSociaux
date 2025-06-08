@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('title', 'Create Student')
+@section('title', trans('lang.create_student'))
 @section('content')
 
 
 
-<h3 class="mb-5 mt-5 text-primary text-center ">Create Student</h3>
+<h3 class="mb-5 mt-5 text-primary text-center ">{{trans('lang.create_student')}}</h3>
 
 <div class="d-flex  justify-content-center">
 
@@ -18,7 +18,7 @@
             <form method="post">
                 @csrf
                 <div class="mb-2">
-                    <label for="name" class="form-label">name</label>
+                    <label for="name" class="form-label">{{trans('lang.name')}}</label>
                     <input type="text" id="name" name="name" class="form-control">
                     @if($errors->has('name'))
                     <div class="text-danger small mt-2">
@@ -27,7 +27,7 @@
                     @endif
                 </div>
                 <div class="mb-2">
-                    <label for="address" class="form-label">Address</label>
+                    <label for="address" class="form-label">{{trans('lang.address')}}</label>
                     <input type="text" id="address" name="address" class="form-control">
                     @if($errors->has('address'))
                     <div class="text-danger mt-2 small">
@@ -36,7 +36,7 @@
                     @endif
                 </div>
                 <div class="mb-2">
-                    <label for="phone" class="form-label">phone</label>
+                    <label for="phone" class="form-label">{{trans('lang.phone')}}</label>
                     <input type="text" id="phone" name="phone" class="form-control">
                     @if($errors->has('phone'))
                     <div class="text-danger mt-2 small">
@@ -45,7 +45,7 @@
                     @endif
                 </div>
                 <div class="mb-2">
-                    <label for="email" class="form-label">e-mail</label>
+                    <label for="email" class="form-label">{{trans('lang.email')}}</label>
                     <input type="email" id="email" name="email" class="form-control">
                     @if($errors->has('email'))
                     <div class="text-danger mt-2 small">
@@ -54,7 +54,7 @@
                     @endif
                 </div>
                 <div class="mb-2">
-                    <label for="date" class="form-label">Birthdate</label>
+                    <label for="date" class="form-label">{{trans('lang.birthday')}}</label>
                     <input type="date" id="date" name="date" class="form-control">
                     @if($errors->has('date'))
                     <div class="text-danger mt-2 small">
@@ -64,7 +64,7 @@
                 </div>
                 <div class="mb-2">
                     <div class="mb-3">
-                        <label for="city_id" class="text-primary">City
+                        <label for="city_id" class="text-primary">{{trans('lang.city')}}
                             <select name="city_id" id="city_id" class=" mt-1 form-select">
                                 @foreach($cities as $city)
                                 <option value="{{ $city->id }}">{{ $city->name }}</option>
@@ -76,9 +76,9 @@
 
                 </div>
 
-                <div class="mt-2 card-footer bg-transparent border-info d-flex justify-content-between ">
+                <div class="mt-2 card-footer bg-transparent border-info d-flex justify-content-center ">
 
-                    <button type="submit" class="btn btn-success text-white">Save</button>
+                    <button type="submit" class="btn mt-3 btn-success text-white">{{trans('lang.save')}}</button>
 
                 </div>
 
