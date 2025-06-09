@@ -6,6 +6,7 @@ use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SetLocaleController;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,6 @@ Route::post('/registration', [UserController::class, 'store'])->name('user.store
 Route::get('/login', [AuthController::class, 'create'])->name('login');
 Route::post('/login', [AuthController::class, 'store'])->name('login.store');
 Route::get('/logout', [AuthController::class, 'destroy'])->name('logout');
+
+
+Route::get('/articles', [ArticleController::class, 'index'])->name('article.index');
