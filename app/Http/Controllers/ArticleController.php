@@ -25,7 +25,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('article.create');
     }
 
     /**
@@ -33,7 +33,26 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+
+            'title' => 'required|min:5',
+            'content' => 'required|min:50|max:500',
+            'url' => 'nullable|url'
+        ]);
+
+        $userId = Auth::id();
+        $student = Student::where('user_id', $userId)->first();
+
+        $article = Article::create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'url' => $request->url,
+            'student_id' => $student->id,
+
+
+        ]);
+        return redirect()->route('article.index', $article->id)->with('success', 'The article was added!');
     }
 
     /**
@@ -49,7 +68,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        return view('articles.index');
     }
 
     /**
@@ -57,7 +76,16 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        //
+
+
+        $article->update([
+
+            'title' => $request->title,
+            'content' => $request->content,
+            'url' => $request->url,
+        ]);
+
+        return redirect()->route('article.index')->with('success', 'Article was updated');
     }
 
     /**
@@ -65,6 +93,8 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        $target = $article->title;
+        $article->delete();
+        return redirect()->route('article.index')->with('success', 'Article: ' . $target . ' was deleted successfully!');
     }
 }

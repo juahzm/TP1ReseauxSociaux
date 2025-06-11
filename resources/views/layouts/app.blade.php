@@ -42,6 +42,27 @@
 
         </ul>
 
+
+
+        <ul class=" nav nav-tabs">
+            <li class="nav-item dropdown">
+
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Articles</a>
+
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{route('article.create')}}">New Article</a></li>
+                    <li><a class="dropdown-item" href="{{route('article.index')}}">All Articles</a></li>
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                </ul>
+            </li>
+
+
+        </ul>
+
         <ul class="nav-tabs nav">
 
             <li class="nav-item dropdown">

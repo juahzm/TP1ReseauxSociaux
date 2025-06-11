@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SetLocaleController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\FileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,3 +46,11 @@ Route::get('/logout', [AuthController::class, 'destroy'])->name('logout');
 
 
 Route::get('/articles', [ArticleController::class, 'index'])->name('article.index');
+Route::get('/article/create', [ArticleController::class, 'create'])->name('article.create');
+Route::post('/article/create', [ArticleController::class, 'store'])->name('article.store');
+Route::delete('/articles/{article}', [ArticleController::class, 'destroy'])->name('article.destroy');
+
+Route::get('/articles/{article}', [ArticleController::class, 'edit'])->name('article.edit');
+Route::put('/articles/{article}', [ArticleController::class, 'update'])->name('article.update');
+
+Route::get('/files', [FileController::class, 'index'])->name('file.index');
