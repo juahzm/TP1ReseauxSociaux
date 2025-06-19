@@ -14,27 +14,46 @@
         <form method="post">
 
             @csrf
-            <div class="mb-2 p-3">
-                <label for="title" class="form-label text-primary">Title</label>
-                <input style=" border: 2px solid #87ceeb; width: 550px; border-radius: 15px;" type=" text" id="title" name="title" class="form-control">
-                @if($errors->has('title'))
+            <div class="p-3">
+                <label for="title" class="form-label text-primary">Title EN</label>
+                <input style=" border: 2px solid #87ceeb; width: 550px; border-radius: 15px;" type=" text" id="title" name="title_en" class="form-control">
+                @if($errors->has('title_en'))
                 <div class="text-danger small mt-2">
-                    {{ $errors->first('title')}}
+                    {{ $errors->first('title_en')}}
+                </div>
+                @endif
+            </div>
+            <div class="mb-2 p-3">
+                <label for="title" class="form-label text-primary">Titre FR</label>
+                <input style=" border: 2px solid #87ceeb; width: 550px; border-radius: 15px;" type=" text" id="title" name="title_fr" class="form-control">
+                @if($errors->has('title_fr'))
+                <div class="text-danger small mt-2">
+                    {{ $errors->first('title_fr')}}
                 </div>
                 @endif
             </div>
 
-            <div class="mb-2 p-3">
+            <div class="p-3 border-info card-footer bg-transparent">
                 <label for="content" class="form-label text-primary">Content</label>
-                <input style=" border: 2px solid #87ceeb; width: 550px; height: 100px; border-radius: 15px;" type=" text" id="content" name="content" class="form-control">
-                @if($errors->has('content'))
+                <input style=" border: 2px solid #87ceeb; width: 550px; height: 100px; border-radius: 15px;" type=" text" id="content" name="content_en" class="form-control">
+                @if($errors->has('content_en'))
                 <div class="text-danger small mt-2">
-                    {{ $errors->first('content')}}
+                    {{ $errors->first('content_en')}}
                 </div>
                 @endif
             </div>
 
             <div class="mb-2 p-3">
+                <label for="content" class="form-label text-primary">Contenu FR</label>
+                <input style=" border: 2px solid #87ceeb; width: 550px; height: 100px; border-radius: 15px;" type=" text" id="content" name="content_fr" class="form-control">
+                @if($errors->has('content_fr'))
+                <div class="text-danger small mt-2">
+                    {{ $errors->first('content_fr')}}
+                </div>
+                @endif
+            </div>
+
+            <div class="mb-2 p-3 border-info card-footer bg-transparent">
                 <label for="url" class="form-label text-primary">Image url</label>
                 <input style=" border: 2px solid #87ceeb; width: 550px; border-radius: 15px;" type=" text" id="url" name="url" class="form-control">
                 @if($errors->has('url'))

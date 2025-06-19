@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
+
 class FileController extends Controller
 {
     /**
@@ -14,7 +15,8 @@ class FileController extends Controller
      */
     public function index()
     {
-        return view('file.index');
+        $files = File::all();
+        return view('file.index', compact('files'));
     }
 
     /**
@@ -22,7 +24,7 @@ class FileController extends Controller
      */
     public function create()
     {
-        //
+        // 
     }
 
     /**
@@ -30,7 +32,24 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'document' => 'required|file|mimes:pdf|max:2048',
+            'student_id' => 'required|exists:students,id',
+        ]);
+
+
+        $filePath = $request->file('document')->store('files', 'public');
+
+
+        File::create([
+            'title' => $request->input('title'),
+            'file_path' => $filePath,
+            'student_id' => $request->input('student_id'),
+            'user_id' => Auth::id(),
+        ]);
+
+        return back()->with('success', 'File uploaded successfully!');
     }
 
     /**

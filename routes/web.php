@@ -54,3 +54,4 @@ Route::get('/articles/{article}', [ArticleController::class, 'edit'])->name('art
 Route::put('/articles/{article}', [ArticleController::class, 'update'])->name('article.update');
 
 Route::get('/files', [FileController::class, 'index'])->name('file.index');
+Route::post('/files', [FileController::class, 'store'])->name('files.store');
