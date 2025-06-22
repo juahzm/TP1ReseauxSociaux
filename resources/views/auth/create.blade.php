@@ -4,7 +4,7 @@
 
 
 
-<h3 class="mb-5 mt-5 text-primary text-center ">Login</h3>
+<h3 class="mb-5 mt-5 text-primary text-center ">{{trans('lang.login')}}</h3>
 
 <div class="d-flex  justify-content-center">
 
@@ -28,7 +28,7 @@
                     @endif
                 </div>
                 <div class="mb-3">
-                    <label for="pwd" class="form-label">Password</label>
+                    <label for="pwd" class="form-label">{{trans('lang.passw')}}</label>
                     <input type="password" id="pwd" name="password" class="form-control">
                     @if($errors->has('password'))
                     <div class="text-danger small mt-2">
@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="mt-2 card-footer bg-transparent border-info d-flex justify-content-center ">
-                    <button type="submit" class="btn mt-3 btn-success">Login</button>
+                    <button type="submit" class="btn mt-3 btn-success">{{trans('lang.login')}}</button>
                 </div>
             </form>
 

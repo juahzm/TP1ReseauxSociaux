@@ -47,11 +47,12 @@
         <ul class=" nav nav-tabs">
             <li class="nav-item dropdown">
 
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Articles</a>
-
+                @auth
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{{trans('lang.articles')}}</a>
+                @endauth
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{route('article.create')}}">New Article</a></li>
-                    <li><a class="dropdown-item" href="{{route('article.index')}}">All Articles</a></li>
+                    <li><a class="dropdown-item" href="{{route('article.create')}}">{{trans('lang.newarticle')}}</a></li>
+                    <li><a class="dropdown-item" href="{{route('article.index')}}">{{trans('lang.allarticle')}}</a></li>
 
                     <li>
                         <hr class="dropdown-divider">
@@ -61,11 +62,11 @@
             </li>
 
             <li class="nav-item dropdown">
-
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Files</a>
-
+                @auth
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{{trans('lang.files')}}</a>
+                @endauth
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{route('file.index')}}">Uploaded Files</a></li>
+                    <li><a class="dropdown-item" href="{{route('file.index')}}">{{trans('lang.uploadedf')}}</a></li>
 
 
                     <li>

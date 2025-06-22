@@ -35,6 +35,7 @@
                             <th class="text-primary ">{{trans('lang.filestudent')}}</th>
                             <th class="text-primary ">{{trans('lang.filetitle')}}</th>
                             <th class="text-primary ">{{trans('lang.filepath')}}</th>
+                            <th class="text-primary ">{{trans('lang.fileaction')}}</th>
 
 
                         </tr>
@@ -53,6 +54,21 @@
                                     class="text-blue-600 hover:underline">
                                     View PDF
                                 </a></td>
+                            <td>
+                                @if($file->student->user_id === Auth::id())
+                                <form action="{{ route('file.destroy', $file->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn">
+                                        <img src="{{ asset('png/delete.png') }}" alt="Delete" style="width:26px; height:26px;">
+                                        Delete
+                                    </button>
+                                </form>
+                                @endif
+
+
+
+                            </td>
 
                             @endforeach
 

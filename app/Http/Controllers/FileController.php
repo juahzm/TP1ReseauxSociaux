@@ -6,6 +6,8 @@ use App\Models\File;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 
 
 
@@ -87,11 +89,22 @@ class FileController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(File $file)
     {
-        //
+        // Sécurité : Vérifie si le fichier appartient au user connecté
+        if ($file->student->user_id !== Auth::id()) {
+            abort(403, 'Unauthorized');
+        }
+
+        // Supprimer le fichier du disque
+        if (Storage::disk('public')->exists($file->file_path)) {
+            Storage::disk('public')->delete($file->file_path);
+        }
+
+        // Supprimer l'entrée de la base de données
+        $file->delete();
+
+        return redirect()->route('file.index')->with('success', 'File deleted successfully!');
     }
 }

@@ -44,14 +44,19 @@
             <img src="{{ asset('png/share.png') }}" alt="Share" style="width:26px; height:26px;">
             Share
         </button>
+        @auth
+        @if($article->student && $article->student->user_id === Auth::id())
         <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#editModal{{ $article->id }}">
             <img src="{{ asset('png/edit.png') }}" alt="Edit" style="width:26px; height:26px;">
             Edit
         </button>
+
         <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#deleteModal{{$article->id}}">
             <img src="{{ asset('png/delete.png') }}" alt="Delete" style="width:26px; height:26px;">
             Delete
         </button>
+        @endif
+        @endauth
     </div>
 
 

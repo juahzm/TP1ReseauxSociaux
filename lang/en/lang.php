@@ -36,7 +36,16 @@ return
         'filetitle' => "File Name",
         'filepath' => "File Path",
         'filestudent' => 'Student Name',
-        'uploadfile' => 'Upload your File'
+        'uploadfile' => 'Upload your File',
+        'login' => 'login',
+        'passw' => 'Password',
+        'fileaction' => 'File action',
+        'articles' => 'Articles',
+        'files' => 'Files',
+        'newarticle' => 'New Article',
+        'allarticle' => 'All Articles',
+        'uploadedf' => 'Uploaded Files'
+
 
 
 
