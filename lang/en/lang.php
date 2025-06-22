@@ -31,8 +31,12 @@ return
         'edit' => "Edit",
         'delete' => "Delete",
         'modal_delete1' => "Are you sure you want to delete?. All data associated with the student ",
-        'modal_delete2' => "will be permanently lost."
-
+        'modal_delete2' => "will be permanently lost.",
+        'title_files' => "Files",
+        'filetitle' => "File Name",
+        'filepath' => "File Path",
+        'filestudent' => 'Student Name',
+        'uploadfile' => 'Upload your File'
 
 
 

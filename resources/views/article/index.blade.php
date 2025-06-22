@@ -26,7 +26,7 @@
         </div>
 
         <div>
-            <h5 class="card-title mt-4 text-primary text-center"><strong> {{ $article->title ? $article->title[app()->getLocale()] ?? $article->title['en'] : '' }}</strong> </h5>
+            <h5 class="card-title mt-4 text-primary text-center"><strong> {{ $article->title[app()->getLocale()] ?? $article->title['en'] ?? '' }}</strong> </h5>
         </div>
     </div>
 
@@ -57,6 +57,7 @@
 
     <!-- Modal edit -->
 
+
     <div class="modal fade" id="editModal{{ $article->id }}" tabindex="-1" aria-labelledby="editModalLabel{{ $article->id }}" aria-hidden="true">
         <div class="modal-dialog">
             <form method="POST" action="{{ route('article.update', $article->id) }}">
@@ -70,13 +71,24 @@
                     <div class="modal-body">
 
                         <div class="mb-3">
-                            <label class="form-label">Title</label>
-                            <input type="text" name="title" class="form-control" value="{{ $article->title ? $article->title[app()->getLocale()] ?? $article->title['en'] : '' }}" required>
+                            <label class="form-label">Title EN</label>
+                            <input type="text" name="title_en" class="form-control" value="{{ $article->title['en'] ?? '' }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Title FR</label>
+                            <input type="text" name="title_fr" class="form-control" value="{{ $article->title['fr'] ?? '' }}">
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Content</label>
-                            <textarea name="content" class="form-control" rows="3" required>{{ $article->content ? $article->content[app()->getLocale()] ?? $article->content['en'] : '' }}</textarea>
+                            <textarea name="content_en" class="form-control" rows="3" required>{{ $article->content['en'] ?? '' }}</textarea>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Content</label>
+                            <textarea name="content_fr" class="form-control" rows="3" required>{{ $article->content['fr'] ?? '' }}</textarea>
+
                         </div>
 
                         <div class="mb-3">
@@ -106,7 +118,15 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Are you sure you want to delete {{ $article->title ? $article->title[app()->getLocale()] ?? $article->title['en'] : '' }}?
+                    Are you sure you want to delete
+                    @if(is_array($article->title))
+                    {{ $article->title[app()->getLocale()] ?? $article->title['en'] ?? '' }}
+                    @else
+                    {{ $article->title }}
+                    @endif
+                    ?
+
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -127,8 +147,15 @@
     </div>
 
     <div class="card-body text-black">
-        <small>{{ $article->content ? $article->content[app()->getLocale()] ?? $article->content['en'] : '' }}</small>
+        <small>
+            @if(is_array($article->content))
+            {{ $article->content[app()->getLocale()] ?? $article->content['en'] ?? '' }}
+            @else
+            {{ $article->content ?? '' }}
+            @endif
+        </small>
     </div>
+
 
     <div class="d-flex flex-row p-3 gap-2 mb-4 justify-content-center">
 

@@ -38,8 +38,8 @@ class ArticleController extends Controller
 
         $request->validate([
 
-            'title_en' => 'required|max:30',
-            'title_fr' => 'max:30',
+            'title_en' => 'required|max:100',
+            'title_fr' => 'max:100',
             'content_en' => 'required|min:5|max:500',
             'content_fr' => 'max:500',
             'url' => 'nullable|url'
@@ -98,11 +98,21 @@ class ArticleController extends Controller
     public function update(Request $request, Article $article)
     {
 
+        $title = array_filter([
+            'en' => $request->title_en,
+            'fr' => $request->title_fr
+        ]);
+
+        $content = array_filter([
+            'en' => $request->content_en,
+            'fr' => $request->content_fr
+        ]);
+
 
         $article->update([
 
-            'title' => $request->title,
-            'content' => $request->content,
+            'title' => $title,
+            'content' => $content,
             'url' => $request->url,
         ]);
 

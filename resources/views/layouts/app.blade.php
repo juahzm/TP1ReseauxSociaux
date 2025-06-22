@@ -60,8 +60,24 @@
                 </ul>
             </li>
 
+            <li class="nav-item dropdown">
+
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Files</a>
+
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{route('file.index')}}">Uploaded Files</a></li>
+
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                </ul>
+            </li>
+
 
         </ul>
+
 
         <ul class="nav-tabs nav">
 

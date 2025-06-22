@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\File;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,9 +16,17 @@ class FileController extends Controller
      */
     public function index()
     {
-        $files = File::all();
-        return view('file.index', compact('files'));
+
+        // return view('file.index', compact('files'));
+
+        $student = Auth::user()->student;
+        $files = File::with('student')->get();
+
+
+        return view('file.index', compact('files', 'student'));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -35,21 +44,23 @@ class FileController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'document' => 'required|file|mimes:pdf|max:2048',
-            'student_id' => 'required|exists:students,id',
         ]);
 
-
+        $student = Auth::user()->student;
         $filePath = $request->file('document')->store('files', 'public');
 
 
         File::create([
             'title' => $request->input('title'),
             'file_path' => $filePath,
-            'student_id' => $request->input('student_id'),
+            'student_id' => $student->id,
             'user_id' => Auth::id(),
         ]);
 
-        return back()->with('success', 'File uploaded successfully!');
+        return redirect()->route('file.index')->with([
+            'success' => 'File uploaded successfully!',
+            'studentName' => Auth::user()->student->name,
+        ]);
     }
 
     /**

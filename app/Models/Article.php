@@ -39,4 +39,9 @@ class Article extends Model
             set: fn($value) => json_encode($value)
         );
     }
+
+    protected $casts = [
+        'title' => 'array',
+        'content' => 'array',
+    ];
 }
